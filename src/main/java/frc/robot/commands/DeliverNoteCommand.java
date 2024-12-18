@@ -23,7 +23,7 @@ public class DeliverNoteCommand extends Command {
 
     @Override
     public void execute() {
-        intaker.setWantedState(IntakerSubsystem.WantedState.FEED);
+        intaker.setWantedState(IntakerSubsystem.WantedState.TRIGGER);
     }
 
     @Override

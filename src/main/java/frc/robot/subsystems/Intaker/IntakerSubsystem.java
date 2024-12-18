@@ -82,16 +82,16 @@ public class IntakerSubsystem extends SubsystemBase {
         // set speeds based on state
         switch (systemState) {
             case TRIGGERING:
-                io.setVelocity(RotationsPerSecond.of(triggerRPM/60));
+                io.setVelocity(RotationsPerSecond.of(triggerRPM));
                 break;
             case FEEDING:
-                io.setVelocity(RotationsPerSecond.of(feedingRPM/60));
+                io.setVelocity(RotationsPerSecond.of(feedingRPM));
                 break;
             case COLLECTING:
                 io.setVoltage(Volts.of(collectVoltage));
                 break;
             case IDLING:
-                io.setVelocity(RotationsPerSecond.of(idleRPM/60));
+                io.setVelocity(RotationsPerSecond.of(idleRPM));
                 break;
             case OUTTAKING:
                 io.setVoltage(Volts.of(outtakeVoltage));
@@ -117,8 +117,12 @@ public class IntakerSubsystem extends SubsystemBase {
             }
             case OUTTAKE -> SystemState.OUTTAKING;
             case COLLECT -> {
+                if (inputs.higherbeamBreakState) {
+                    yield SystemState.IDLING;
+                }
                 if (inputs.lowerBeamBreakState) {
                     //Decide if note has entered intaker
+                    setWantedState(WantedState.FEED);
                     yield SystemState.FEEDING;
                 }
                 yield SystemState.COLLECTING;
