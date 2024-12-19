@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj2.command.WaitUntilCommand;
 import frc.robot.FieldConstants;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Intaker.IntakerSubsystem;
-import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.Shooter.Shooter;
 import frc.robot.subsystems.swerve.Swerve;
 import frc.robot.utils.shooting.ShootingDecider;
 

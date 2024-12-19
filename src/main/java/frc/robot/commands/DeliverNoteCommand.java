@@ -1,9 +1,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.Intaker.Intaker;
 import frc.robot.subsystems.Intaker.IntakerSubsystem;
-import frc.robot.subsystems.Shooter;
 
 public class DeliverNoteCommand extends Command {
 
